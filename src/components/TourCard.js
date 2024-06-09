@@ -7,7 +7,7 @@ import zIndex from '@mui/material/styles/zIndex'
 const TourCard = ({tour}) => {
     return (
                 // <NavLink>
-                    <Grid item xs={3}>
+                    <Grid item xs={0} width={400} height={280}>
                         <NavLink to={`/${tour.id}`} style={{textDecoration: 'none'}}>
                         <Paper elevation={3}>
                         <img src={tour.image} className='img'/>
