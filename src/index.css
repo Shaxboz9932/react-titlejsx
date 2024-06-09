@@ -1,21 +1,19 @@
-body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+} 
+
+.img {
+    width: 100%;
+    height: 5rem;
 }
 
-
-.wrapper {
-    padding-top: 5rem;
-    margin: 0 auto;
-    width: 600px;
+.back-color {
+    background-color: black;
 }
 
-.rm{
-    background-color: red;
-    border-radius: 50%;
-    color: white;
-    border: none;
-}
-
-.done{
-    text-decoration: line-through;
+.closeModal {
+    display: none;
 }

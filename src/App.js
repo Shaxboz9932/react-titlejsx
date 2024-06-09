@@ -1,43 +1,22 @@
-import React, { useState } from 'react'
-import Navbar from './components/Navbar'
-import Main from './components/Main'
-import UserAddForm from './components/UserAddForm'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import Tour from './pages/Tour'
+import SearchAppBar from "./components/AppBar"
+import { useStoreTour } from "./state/State"
 
-function App() {
+function App () {
 
-    const [users, setUsers] = useState([])
+    const {tours} = useStoreTour()
 
-    const [showModal, setShowModal] = useState(false)
-
-    const handleDelete = (id) => {
-        const deleteUser = users.filter((user)=>{
-            return user.id !== id
-        })
-        setUsers(deleteUser)
-    }
-
-    const showModalFunc = () => {
-        setShowModal(true)
-    }
-    const NotShowModalFunc = () => {
-        setShowModal(false)
-    }
-
-    const addTitle = (user) => {
-        setUsers((prev)=>{
-            return [...prev, user]
-        })
-        setShowModal(false)
-    }
-
-  return (
-    <div className='container container-fluid'>
-      <Navbar usersLength={users.length} showModalFunc={showModalFunc}/>
-      {showModal && <UserAddForm NotShowModalFunc={NotShowModalFunc} addTitle={addTitle}/>}
-      {users.length === 0 && <h2>Not Photos</h2>}
-      <Main users={users} handleDelete={handleDelete}/>
-    </div>
-  )
+    return (
+        <BrowserRouter>
+            <SearchAppBar/>
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path=':id' element={<Tour item={tours} />}/>
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App
